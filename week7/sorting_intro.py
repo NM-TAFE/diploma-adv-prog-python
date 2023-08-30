@@ -46,7 +46,7 @@ def main():
     algorithms = [('Quicksort', quicksort),
                   ('Selection Sort', sort_with_selection_sort)]
 
-    extrapolate_size = 10 ** 10 # This is the size you want to extrapolate for
+    extrapolate_size = 10**10 # This is the size you want to extrapolate for
     # No one would ever be silly enough to try and do an actual selection sort 
     # on a list this big! 
 

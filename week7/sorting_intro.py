@@ -5,12 +5,9 @@ import timeit
 import numpy as np
 
 
-
-
 T = TypeVar('T', int, float)
 
-
-def _find_smallest(items: list[T], x=False) -> int:
+def _find_smallest(items: list[T]) -> int:
     smallest_item = items[0]
     smallest_index = 0
     if x:
@@ -23,7 +20,7 @@ def _find_smallest(items: list[T], x=False) -> int:
 
 
 def sort_with_selection_sort(items: list[T]) -> list[T]:
-    items = items.copy()
+    items = items.copy() # we don't want to mutate the list passed to us
     return [items.pop(_find_smallest(items))
                       for _ in range(len(items))]
 
@@ -36,14 +33,11 @@ def quicksort(items: list[T]) -> list[T]:
     more = [elem for elem in items if elem > pivot]
     return quicksort(less) + [pivot] + quicksort(more)
 
+
 def time_algorithm(algorithm: Callable, list_size: int) -> float:
     test_data = random.sample(range(1, list_size * 10), list_size)
     timer = timeit.Timer(lambda: algorithm(test_data))
     return timer.timeit(1)
-
-
-
-
 
 
 
@@ -53,6 +47,8 @@ def main():
                   ('Selection Sort', sort_with_selection_sort)]
 
     extrapolate_size = 10 ** 10 # This is the size you want to extrapolate for
+    # No one would ever be silly enough to try and do an actual selection sort 
+    # on a list this big! 
 
     plt.figure(figsize=(10, 5))
 
@@ -86,10 +82,10 @@ if __name__ == '__main__':
 
 
 
-
+# Example, how you could test sorting. 
 # class TestMySort(unittest.TestCase):
 #     def setUp(self) -> None:
-#         self.test_list = random.sample(range(12_000), 10)
+#         self.test_list = random.sample(range(12_000), 10_000)
 #
 #     def test_selection_sort(self):
 #         self.assertListEqual(sort_with_selection_sort(self.test_list),

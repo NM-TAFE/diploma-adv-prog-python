@@ -57,15 +57,17 @@ def main():
         plt.plot(sizes, times, 'o-', label=algo_name)
 
         if algo_name == 'Selection Sort':
-            # Quadratic fit for Selection Sort
+            # Polynomial (O(n**2)) fit for Selection Sort
             coefficients = np.polyfit(sizes, times, 2)
             estimated_time = coefficients[0] * extrapolate_size**2 + coefficients[1] * extrapolate_size + coefficients[2]
         elif algo_name == 'Quicksort':
-            # Log-linear fit for Quicksort
+            # Log-linear fit for Quicksort O(n*log n)
             log_sizes = np.log(sizes)
             coefficients = np.polyfit(sizes * log_sizes, times, 1)
             estimated_time = coefficients[0] * extrapolate_size * np.log(extrapolate_size) + coefficients[1]
-
+        # Note that while knowing the big O for a given algorithm does NOT allow
+        # us to predict a runtime on given hardware for a given input and the given interpreter
+        # once we have data we can make **educated** models of how the algorithm behaves
         print(f"Estimated {algo_name} time for n={extrapolate_size}: {estimated_time:.4f} seconds")
 
     plt.title('Sorting Algorithms Execution Time vs. List Size')

@@ -48,11 +48,11 @@ def time_algorithm(algorithm: Callable, list_size: int) -> float:
 
 
 def main():
-    sizes = [n for n in range(100, 10_000, 100)]
+    sizes = [n for n in range(100, 25_000, 200)]
     algorithms = [('Quicksort', quicksort),
                   ('Selection Sort', sort_with_selection_sort)]
 
-    extrapolate_size = 10 ** 10 # This is the size you want to extrapolate for
+    extrapolate_size = 50_000 # This is the size you want to extrapolate for
 
     plt.figure(figsize=(10, 5))
 
@@ -71,6 +71,7 @@ def main():
             estimated_time = coefficients[0] * extrapolate_size * np.log(extrapolate_size) + coefficients[1]
 
         print(f"Estimated {algo_name} time for n={extrapolate_size}: {estimated_time:.4f} seconds")
+        print(f"Actual measure for longest {algo_name} {times[-1]}")
 
     plt.title('Sorting Algorithms Execution Time vs. List Size')
     plt.xlabel('List Size')

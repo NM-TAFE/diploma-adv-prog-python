@@ -5,16 +5,11 @@ import timeit
 import numpy as np
 
 
-
-
 T = TypeVar('T', int, float)
 
-
-def _find_smallest(items: list[T], x=False) -> int:
+def _find_smallest(items: list[T]) -> int:
     smallest_item = items[0]
     smallest_index = 0
-    if x:
-        print("Hello World!")
     for i, item in enumerate(items):
         if item < smallest_item:
             smallest_item = item
@@ -23,7 +18,7 @@ def _find_smallest(items: list[T], x=False) -> int:
 
 
 def sort_with_selection_sort(items: list[T]) -> list[T]:
-    items = items.copy()
+    items = items.copy() # we don't want to mutate the list passed to us
     return [items.pop(_find_smallest(items))
                       for _ in range(len(items))]
 
@@ -36,14 +31,11 @@ def quicksort(items: list[T]) -> list[T]:
     more = [elem for elem in items if elem > pivot]
     return quicksort(less) + [pivot] + quicksort(more)
 
+
 def time_algorithm(algorithm: Callable, list_size: int) -> float:
     test_data = random.sample(range(1, list_size * 10), list_size)
     timer = timeit.Timer(lambda: algorithm(test_data))
     return timer.timeit(1)
-
-
-
-
 
 
 
@@ -52,7 +44,9 @@ def main():
     algorithms = [('Quicksort', quicksort),
                   ('Selection Sort', sort_with_selection_sort)]
 
-    extrapolate_size = 50_000 # This is the size you want to extrapolate for
+    extrapolate_size = 10**10 # This is the size you want to extrapolate for
+    # No one would ever be silly enough to try and do an actual selection sort 
+    # on a list this big!
 
     plt.figure(figsize=(10, 5))
 
@@ -61,15 +55,17 @@ def main():
         plt.plot(sizes, times, 'o-', label=algo_name)
 
         if algo_name == 'Selection Sort':
-            # Quadratic fit for Selection Sort
+            # Polynomial (O(n**2)) fit for Selection Sort
             coefficients = np.polyfit(sizes, times, 2)
             estimated_time = coefficients[0] * extrapolate_size**2 + coefficients[1] * extrapolate_size + coefficients[2]
         elif algo_name == 'Quicksort':
-            # Log-linear fit for Quicksort
+            # Log-linear fit for Quicksort O(n*log n)
             log_sizes = np.log(sizes)
             coefficients = np.polyfit(sizes * log_sizes, times, 1)
             estimated_time = coefficients[0] * extrapolate_size * np.log(extrapolate_size) + coefficients[1]
-
+        # Note that while knowing the big O for a given algorithm does NOT allow
+        # us to predict a runtime on given hardware for a given input and the given interpreter
+        # once we have data we can make **educated** models of how the algorithm behaves
         print(f"Estimated {algo_name} time for n={extrapolate_size}: {estimated_time:.4f} seconds")
         print(f"Actual measure for longest {algo_name} {times[-1]}")
 
@@ -87,10 +83,10 @@ if __name__ == '__main__':
 
 
 
-
+# Example, how you could test sorting. 
 # class TestMySort(unittest.TestCase):
 #     def setUp(self) -> None:
-#         self.test_list = random.sample(range(12_000), 10)
+#         self.test_list = random.sample(range(12_000), 10_000)
 #
 #     def test_selection_sort(self):
 #         self.assertListEqual(sort_with_selection_sort(self.test_list),

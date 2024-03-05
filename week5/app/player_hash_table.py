@@ -3,12 +3,15 @@ from typing import TYPE_CHECKING
 from player_list import PlayerList
 from player import Player
 
+
+
 class PlayerHashTable:
     SIZE = 42
     hash_map: list[PlayerList]
 
     def __init__(self):
-        self.hash_map = [PlayerList()] * self.SIZE
+        self.hash_map = [
+            PlayerList() for _ in range(self.SIZE)]
 
     def get_index(self, hash_: int):
         return hash_ % self.SIZE
@@ -23,8 +26,6 @@ class PlayerHashTable:
 
         except ValueError as e:
             raise KeyError(str(e))
-
-
 
     def __setitem__(self, id, name):
         """Behave like a dictionary such that:
@@ -42,17 +43,21 @@ class PlayerHashTable:
         except ValueError:
             player_list.append(player)
 
-
         # hash the player
         # see if player in list
         # if yes, replace player
         # else append player
+
+
 def main():
     ph = PlayerHashTable()
     ph['1'] = 'Raf'
     ph['2'] = 'Faf'
     print(ph['1'])
     # ph['42']
+    for pl in ph.hash_map:
+        print(id(pl))
+
 
 if __name__ == '__main__':
     main()

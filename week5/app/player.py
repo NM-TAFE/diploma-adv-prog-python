@@ -1,4 +1,4 @@
-import hashlib
+from custom_hashing import pearson_hash
 
 class Player:
     name: str
@@ -25,6 +25,4 @@ class Player:
 
     @staticmethod
     def make_hash(key):
-        hasher = hashlib.sha256()
-        hasher.update(str(key).encode('utf8'))
-        return int(hasher.hexdigest(), 16)
+        return pearson_hash(key)

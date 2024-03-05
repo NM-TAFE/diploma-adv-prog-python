@@ -1,3 +1,4 @@
+"""Demonstrates Python name mangling"""
 from some_vars import *
 class Cat:
     x = 42

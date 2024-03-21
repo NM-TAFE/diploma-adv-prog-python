@@ -24,7 +24,7 @@ class Node:
         class_name = self.__class__.__name__
         return (f"{class_name}({self.player!r}, "
                 f"{self.left!r},"
-                f"{self.right!r:=20*})")
+                f"{self.right!r})")
 
 
 class BST:

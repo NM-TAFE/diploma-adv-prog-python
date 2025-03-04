@@ -6,12 +6,17 @@ pearson_table = list(range(256))
 random.shuffle(pearson_table)
 
 class SmartLookupTable[K: Hashable, T]:
+    """Okay, it's a hash table!
+    Of course, IRL we'd use a dictionary!"""
     SIZE: int
     table: list[T | None]
 
     def __init__(self):
         self.SIZE = 256
         self.table = [[] for _ in range(self.SIZE)]
+        # ensure you understand why not this:
+        # [[]] * self.SIZE
+
 
 
     def p_hash(self, key):
@@ -34,6 +39,9 @@ class SmartLookupTable[K: Hashable, T]:
 
 
     def _find_matching_key(self, target: K, candidates: list) -> int:
+        # note - use candidates.index(target)
+        # this is to illustrate the sequential traversal
+        # typical when using chaining with hash tables
         for i, (k, *_) in enumerate(candidates):
             if k == target:
                 return i
@@ -45,7 +53,8 @@ class SmartLookupTable[K: Hashable, T]:
         if not keys:
             raise KeyError(f"Matching key {key} not found")
 
-        return self._find_matching_key(key, keys)
+        return keys[
+            self._find_matching_key(key, keys)]
 
 
 if __name__ == '__main__':
@@ -54,6 +63,10 @@ if __name__ == '__main__':
     ht.insert("Ait", (99, 100, 100))
     ht.insert("tiA", (99, 100, 100))
     ht.insert("Vishal", (99, 90, 80))
+    try:
+        ht.get("no one")
+    except KeyError:
+        print("value not found")
     print(ht.get("Avigad"))
     print(ht.get("Vishal"))
     print(ht.get("Ait"))
@@ -68,10 +81,7 @@ if __name__ == '__main__':
     print(ht.p_hash("baaaaa"))
 
 
-    try:
-        ht.get("no one")
-    except KeyError:
-        print("value not found")
+
 
 
 

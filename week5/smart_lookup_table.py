@@ -54,7 +54,8 @@ class SmartLookupTable[K: Hashable, T]:
             raise KeyError(f"Matching key {key} not found")
 
         return keys[
-            self._find_matching_key(key, keys)]
+            self._find_matching_key(key, keys)
+        ]
 
 
 if __name__ == '__main__':

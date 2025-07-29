@@ -30,14 +30,17 @@ Create a simple python application that defines a classroom that contains studen
 The following UML diagram describes the system:
 ```mermaid
 classDiagram
+    Classroom o-- Student
     class Classroom {
-        +add_student(Student student)
+        +add_s
+        tudent(Student student)
         +remove_student(Student student)
     }
     class Student {
         +name: str
         +age: int
     }
+
 ```
 Create the following files:
 - `classroom.py`

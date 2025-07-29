@@ -1,0 +1,6 @@
+[project]
+name = "adv-py-demo"
+version = "0.1.0"
+description = "contains weekly ad-hoc exercises and solutions"
+requires-python = ">=3.13"
+dependencies = []

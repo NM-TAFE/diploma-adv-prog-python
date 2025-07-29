@@ -22,7 +22,13 @@ class LinkedList:
     def push(self, value):
         if self.root is None:
             self.root = Node(value)
-            
+            return
+        new_node = Node(value)
+        new_node.next_node = self.root
+        self.root = new_node
+
+
+
 
     def __repr__(self):
         return f"LinkedList({self.root!r})"

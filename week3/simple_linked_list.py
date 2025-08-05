@@ -59,9 +59,6 @@ class LinkedList:
     def push(self, value: int) -> None:
         """Inserts a new node as the head"""
         new_node = Node(value)
-        if not self.root:
-            self.root = new_node
-            return
         new_node.next_node = self.root
         self.root = new_node
 

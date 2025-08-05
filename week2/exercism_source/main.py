@@ -1,4 +1,4 @@
-from simple_linked_list import LinkedList
+from week3.simple_linked_list import LinkedList
 
 my_list = LinkedList()
 

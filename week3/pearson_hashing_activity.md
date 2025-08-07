@@ -9,6 +9,7 @@ Using the example provided each byte will be computed using:
 - A permutation table
 - A hash seed based on the round number
 - A dictionary of values created from the permutation table
+- {index: value for index, value in enumerate(PERMUTATION_TABLE)}
 - Bitwise XOR and modular operations
 - Convert characters to ASCII values
 - Use XOR in Python (exclusive or)

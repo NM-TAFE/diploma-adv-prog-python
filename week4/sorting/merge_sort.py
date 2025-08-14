@@ -7,7 +7,7 @@ def merge_sort(arr):
         merge_sort(LEFT)
         merge_sort(RIGHT)
 
-         #set the starting point
+        #set the starting point
         index_left = index_right = target_index = 0
 
         while index_left < len(LEFT) and index_right < len(RIGHT):

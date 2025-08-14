@@ -1,5 +1,5 @@
 def selection_sort(arr):
-    # outer loop ensures we move up the array and place the itemsat the ealiest position
+    # outer loop ensures we move up the array and place the items at the ealiest position
     for index in range(len(arr)):
         current_index = index
         for next_index in range(index+1, len(arr)):

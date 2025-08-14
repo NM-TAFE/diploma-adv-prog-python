@@ -31,7 +31,7 @@ Solution must pass the acceptance tests below.
 ### Deliverables
 1.	galaxy.py — defines Galaxy with comparison dunders (__eq__, __lt__, __le__, __gt__, __ge__, __ne__) and __hash__, plus __repr__/__str__.
 2.	sorting.py — implements:
--	my_mutating_sort(items) — in‑place sor
+-	my_mutating_sort(items) — in‑place sort
 -	my_immutable_sort(items) — returns new sorted sequence 
 -	galaxy_sorting_method(galaxies) — returns galaxies in the required order.
 3.	tests/test_sorting.py — your unit tests that cover:

@@ -38,7 +38,7 @@ Solution must pass the acceptance tests below.
 -	Ordering of Galaxy objects.
 -	In‑place vs immutable behavior.
 -	Correctness on small and medium datasets.
-4.	README.md — short notes: chosen algorithms, complexity, stability, and who did what.
+4.	README.md — short notes: who did what.
 
 ### Hints 
 -	Implement __eq__ and __lt__ first; the rest follow the same field.

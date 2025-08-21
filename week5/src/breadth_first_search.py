@@ -5,21 +5,6 @@
 
 from collections import deque
 
-# def bfs_search(graph, start):
-#     """Return list of nodes in BFS visit order from start."""
-#     visited, order = set([start]), []
-#     queue = deque([start])
-
-#     while queue:
-#         node = queue.popleft()
-#         order.append(node)
-#         for nbr in graph.get(node, []):
-#             if nbr not in visited:
-#                 visited.add(nbr)
-#                 queue.append(nbr)
-#     return order
-
-
 def bfs_iterative_search(graph, start_node, goal_node):
     """Return True iff goal_node is reachable from start_node using BFS."""
     if start_node == goal_node:

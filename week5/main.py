@@ -89,8 +89,8 @@ def run_experiment_2(n_nodes: int = 10_000, avg_neighbours: int = 6,trials: int 
 if __name__ == "__main__":
     run_experiment_1()
 
-    # graph_results = run_experiment_2()
+    graph_results = run_experiment_2()
 
-    # print("\nAverage time (ms) over 10000 Graph searches (BFS vs DFS)")
-    # for k, v in graph_results.items():
-    #     print(f"{k}: {v:.6f}")
+    print("\nAverage time (ms) over 10000 Graph searches (BFS vs DFS)")
+    for k, v in graph_results.items():
+        print(f"{k}: {v:.6f}")

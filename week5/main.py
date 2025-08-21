@@ -4,7 +4,7 @@ from src.binary_search import *
 from src.linear_search import *
 from src.breadth_first_search import *
 
-def run_experiment_1(seed=42, n=10000, trials=10000, low=1, high=12000):
+def run_experiment_1(seed=42, n=10000, trials=10000, low=1, high=10000):
     """
     Timing experiment to compares different search strategies.
 
@@ -66,7 +66,7 @@ def run_experiment_1(seed=42, n=10000, trials=10000, low=1, high=12000):
     print(f"Binary Search(sorted)   ms: {avg_time_binary_sorted}")
 
 
-def run_experiment_2(n_nodes: int = 10000, avg_neighbours: int = 10,trials: int = 10000, seed: int = 123):
+def run_experiment_2(n_nodes: int = 10000, avg_neighbours: int = 7,trials: int = 10000, seed: int = 123):
     """
     Time BFS vs DFS (iterative) over many random start/goal pairs on a graph.
 
@@ -106,7 +106,7 @@ def run_experiment_2(n_nodes: int = 10000, avg_neighbours: int = 10,trials: int 
     return results
 
 if __name__ == "__main__":
-    # run_experiment_1()
+    run_experiment_1()
 
     graph_results = run_experiment_2()
 

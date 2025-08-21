@@ -25,7 +25,7 @@ all_request_ids = (
 )
 
 # Safe demo sample
-TARGET_SAMPLE_SIZE = 50_000
+TARGET_SAMPLE_SIZE = 10000
 sample_size = min(TARGET_SAMPLE_SIZE, len(all_request_ids))
 if sample_size < TARGET_SAMPLE_SIZE:
     print(f"[info] Dataset has only {len(all_request_ids):,} rows; sampling {sample_size:,}.")
@@ -88,8 +88,8 @@ avg_time_dict_lookup = sum(
 # ---------------------------------------------------------------------------
 # Results
 print(f"Average over {len(test_needles)} POLARS trials (ms):")
-print(f"  Linear (unsorted): {avg_time_linear_unsorted:.6f} ms   [Slide: Linear search]")
-print(f"  Linear (sorted):   {avg_time_linear_sorted:.6f} ms     [Slide: Linear search]")
-print(f"  Binary (sorted):   {avg_time_binary_sorted:.6f} ms     [Slide: Binary search]")
-print(f"  Set lookup:        {avg_time_set_lookup:.6f} ms        [Hash/set comparison]")
-print(f"  Dict lookup:       {avg_time_dict_lookup:.6f} ms       [Hash/dict comparison]")
+print(f"Linear (unsorted): {avg_time_linear_unsorted:.6f} ms")
+print(f"Linear (sorted):   {avg_time_linear_sorted:.6f} ms")
+print(f"Binary (sorted):   {avg_time_binary_sorted:.6f} ms")
+print(f"Set lookup:        {avg_time_set_lookup:.6f} ms")
+print(f"Dict lookup:       {avg_time_dict_lookup:.6f} ms")

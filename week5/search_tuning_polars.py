@@ -4,19 +4,17 @@
 
 import polars as pl
 import random
+from bisect import bisect_left
 from src.helpers import *         
 from src.binary_search import * 
 from src.linear_search import *  
 
-# ---------------------------------------------------------------------------
-# Load dataset from Kaggle CSV with Polars
 CSV_PATH = "./data/311_service_requests.csv"   # update if needed
 ID_COLUMN = "Unique Key"
 
-# Fast eager read; for very large files you can use lazy scan (see note below)
 df = pl.read_csv(CSV_PATH, columns=[ID_COLUMN])
 
-# Convert to plain Python list for algorithm-only timing
+# Convert to plain python list
 all_request_ids = (
     df
     .select(pl.col(ID_COLUMN).cast(pl.Int64))   # ensure 64-bit ints
@@ -24,25 +22,24 @@ all_request_ids = (
     .to_list()
 )
 
-# Safe demo sample
-TARGET_SAMPLE_SIZE = 10000
+# Configure sample size
+TARGET_SAMPLE_SIZE = 50_000
 sample_size = min(TARGET_SAMPLE_SIZE, len(all_request_ids))
 if sample_size < TARGET_SAMPLE_SIZE:
     print(f"[info] Dataset has only {len(all_request_ids):,} rows; sampling {sample_size:,}.")
 request_ids_unsorted = random.sample(all_request_ids, k=sample_size)
 
-print(f"Loaded {len(request_ids_unsorted):,} request IDs from Kaggle dataset (Polars).")
+print(f"Loaded {len(request_ids_unsorted):,} request IDs")
 
 def set_lookup(target_id, id_set):
-    """Return True if target_id is in id_set, else False."""
+    """Return True if target_id is in id_set"""
     return target_id in id_set
 
 def dict_lookup(target_id, id_dict):
-    """Return True if target_id is in id_dict (dict keys), else None."""
+    """Return True if target_id is in id_dict (dict keys)"""
     return id_dict.get(target_id)
 
-# ---------------------------------------------------------------------------
-# Build test needles: half guaranteed present, half absent
+# build test targets
 random.seed(42)
 NUM_TRIALS = 10000
 dataset_size = len(request_ids_unsorted)
@@ -54,12 +51,13 @@ absent_needles = [max_existing_id + 1 + i for i in range(NUM_TRIALS - len(presen
 test_needles = present_needles + absent_needles
 random.shuffle(test_needles)
 
-# Get structures to test
+# orgnise data structures for test
 request_ids_sorted = sorted(request_ids_unsorted)
 request_id_set = set(request_ids_unsorted)
 dict_sample_size = min(200_000, dataset_size)
 request_id_dict = {req_id: True for req_id in random.sample(request_ids_unsorted, k=dict_sample_size)}
 
+# Testing
 avg_time_linear_unsorted = sum(
     time_call(lambda target=needle: linear_search(target, request_ids_unsorted))
     for needle in test_needles

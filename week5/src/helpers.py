@@ -2,7 +2,6 @@ import random
 from time import perf_counter_ns
 
 
-# ---------- Data generation ----------
 def make_unique_random_list(n=10_000, low=1, high=12_000):
     """ returns unsorted order"""
     arr = random.sample(range(low, high + 1), k=n)
@@ -17,7 +16,7 @@ def make_random_graph(n: int = 20_000, avg_degree: int = 4, seed: int = 42):
     random_instance = random.Random(seed)
     nodes = list(range(n))
     graph = {adj_members: [] for adj_members in nodes}
-    # For each node, sample up to 'avg_degree' distinct neighbors
+    # For each node add the neighbors
     for this_node in nodes:
         pool = nodes[:this_node] + nodes[this_node+1:] 
         k = min(avg_degree, len(pool))
@@ -27,11 +26,12 @@ def make_random_graph(n: int = 20_000, avg_degree: int = 4, seed: int = 42):
 
 
 def convert_to_ms(ns): 
-    """float milliseconds"""   
+    """float in milliseconds"""   
     return ns / 1_000_000.0
 
 
 def time_call(algorithm_called, repeats=1):
+    """Use the lambda functions in main.py which include the parameters passed"""
     total = 0
     for _ in range(repeats):
         time_0 = perf_counter_ns()

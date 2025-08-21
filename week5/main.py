@@ -37,13 +37,17 @@ def run_experiment_1(seed=42, n=10_000, trials=10000, low=1, high=12_000):
     random.shuffle(needles)
 
     # sort it
-
+    data_sorted = sorted(data_unsorted)
 
     # Linear search on UNSORTED
-
+    avg_time_linear_unsorted = sum(
+        time_call(lambda: linear_search(x, data_unsorted)) for x in needles
+    ) / trials
 
     # Linear search on SORTED
-    
+    avg_time_linear_sorted = sum(
+        time_call(lambda: linear_search(x, data_sorted)) for x in needles
+    ) / trials
 
     # Binary search on UNSORTED
 
@@ -53,8 +57,8 @@ def run_experiment_1(seed=42, n=10_000, trials=10000, low=1, high=12_000):
 
     print(f"Linear Search(unsorted) ms: {avg_time_linear_unsorted}")
     print(f"Linear Search(sorted)   ms: {avg_time_linear_sorted}")
-    print(f"Binary Search(unsorted) ms: {avg_time_binary_unsorted}")
-    print(f"Binary Search(sorted)   ms: {avg_time_binary_sorted}")
+    # print(f"Binary Search(unsorted) ms: {avg_time_binary_unsorted}")
+    # print(f"Binary Search(sorted)   ms: {avg_time_binary_sorted}")
 
 
 def run_experiment_2(n_nodes: int = 10_000, avg_neighbours: int = 6,trials: int = 10000, seed: int = 123):
@@ -80,3 +84,13 @@ def run_experiment_2(n_nodes: int = 10_000, avg_neighbours: int = 6,trials: int 
   
 
     # create a starting time for each algotihm
+
+
+if __name__ == "__main__":
+    run_experiment_1()
+
+    # graph_results = run_experiment_2()
+
+    # print("\nAverage time (ms) over 10000 Graph searches (BFS vs DFS)")
+    # for k, v in graph_results.items():
+    #     print(f"{k}: {v:.6f}")

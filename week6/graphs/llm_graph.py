@@ -50,11 +50,16 @@ class WordGraph:
         if total_count == 0:
             return "No prediction available."
         
-        # Take the total recorded word combination count for all training sets
+        # Take the total recorded word combination count for all training sets combine into one collection to sort
         probabilities = [(node.word, node.count / total_count) for node in next_words]
+       
+        # Also known as :)
+        # probabilities = []
+        # for node in next_words:
+        #     probabilities.append((node.word, node.count / total_count)) 
 
-        # Sort by probability (highest first) so we cancselect the likeliest
-        best = sorted(probabilities, key=lambda x: x[1], reverse=True)
+        # Sort by probability (highest first) so we can select the likeliest
+        best = sorted(probabilities, key=lambda bigram: bigram[1], reverse=True)
         return best[0][0]
 
     # def display_graph(self):
@@ -63,11 +68,10 @@ class WordGraph:
     #         transitions = ", ".join(f"{node.word} ({node.count})" for node in connections)
     #         print(f"{' '.join(bigram)} → {transitions}")
 
-# Example Usage
 def main():
     predictor = WordGraph()
     
-    # Train with example sentences
+    # Train
     predictor.add_sentence("The capital of France is Berlin")
     predictor.add_sentence("The capital of Germany is Berlin")
     predictor.add_sentence("The capital of Spain is Madrid")
@@ -75,7 +79,7 @@ def main():
     predictor.add_sentence("The capital of France is Paris")
     predictor.add_sentence("The capital of Italy is Rome")
     
-    # Test predictions
+    # Test
     print("\nPredicted next word:")
     print("The capital →", predictor.predict_next_word("The capital"))
     print("of France →", predictor.predict_next_word("of France"))

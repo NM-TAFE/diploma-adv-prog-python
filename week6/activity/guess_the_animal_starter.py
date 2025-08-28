@@ -55,24 +55,24 @@ class GuessTheAnimal:
                 return response
 
     # A bunch of helper functions for player interaction that are pretty self-explanatory
-    def __get_animal():
+    def __get_animal(self):
         print('You win. I give up. What animal were you thinking of?')
         return self.__input()
 
-    def __get_differentiating_question():
+    def __get_differentiating_question(self):
         print('What y/n question would you ask to tell the difference between a {0} and a {1}?'.format())
         return self.__input()
 
-    def __get_differentiating_answer():
+    def __get_differentiating_answer(self):
         print('And what would your answer be for a {0}? (y/n)'.format())
         return self.__input(yes_no=True)
 
-    def __ask_differentiating_question():
+    def __ask_differentiating_question(self):
         print('{0} (y/n)'.format())
         return self.__input(yes_no=True)
 
     def __guess_animal(self, animal):
-        print('Is it a {0}? (y/n)'.format())
+        print('Is it a {0}? (y/n)'.format(animal))
         return self.__input(yes_no=True)
 
     def __play_again(self):
@@ -94,6 +94,7 @@ class GuessTheAnimal:
         try:
             with open(self.SAVE_GAME_FILENAME, 'rb') as saved_game:
                 # Game and tree reloading
+                # Consider what private variable instance shoudl be updated
                 pass
         except FileNotFoundError:
             print('Oops. No saved game found.')
@@ -103,7 +104,9 @@ class GuessTheAnimal:
         """
         Use the  information to update the current node and connect to the next node/leaf
         Ref: slide 19
+        
         """
+        # What actions do we need to take on both any new or existing node?
         pass
      
 

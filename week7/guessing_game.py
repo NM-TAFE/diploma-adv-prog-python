@@ -11,13 +11,22 @@ def get_secret(max_value: int) -> int:
 def is_correct(guess: int, secret: int) -> bool:
     return guess == secret
 
+def linear_ai(max_value: int, min_value: int = 0) -> int:
+    """Performs a linear search"""
 
+def binary_search_ai(max_value: int, min_value: int = 0) -> int:
+    """Uses a hyper-intelligent (post-human) super binary
+    search capabilities.
+    """
 def interactive(max_value: int, min_value: int = 0) -> int:
     """Human function"""
 
     while True:
         print(f"Please give a number between {min_value}-{max_value}")
-        guess = input(f'{min_value}-{max_value}? ')
+
+        clue = min_value + (max_value - min_value) // 2
+        guess = input(f'{min_value}-{max_value} ({clue})? ')
+
         try:
             return int(guess)
         except ValueError:
@@ -63,8 +72,8 @@ def play(max_value: int,
             min_value = guess + 1
             print("Guess higher")
         else:
-            print("Guess lower")
             max_value = guess - 1
+            print("Guess lower")
 
 
 

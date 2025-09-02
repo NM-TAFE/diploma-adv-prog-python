@@ -74,10 +74,10 @@ def play(max_value: int,
                 save_result(file, tries, og_max, guess_function)
             break
         elif guess < secret:
-            min_value = guess + 1
+            min_value = guess + 1 if guess > min_value else min_value
             print("Guess higher")
         else:
-            max_value = guess - 1
+            max_value = guess - 1 if guess < max_value else max_value
             print("Guess lower")
 
 

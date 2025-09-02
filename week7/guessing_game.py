@@ -14,11 +14,13 @@ def is_correct(guess: int, secret: int) -> bool:
 
 def linear_ai(max_value: int, min_value: int = 0) -> int:
     """Performs a linear search"""
+    return min_value
 
 def binary_search_ai(max_value: int, min_value: int = 0) -> int:
     """Uses a hyper-intelligent (post-human) super binary
     search capabilities.
     """
+    return min_value + (max_value - min_value)//2
 
 def interactive(max_value: int, min_value: int = 0) -> int:
     """Human function"""
@@ -79,9 +81,14 @@ def play(max_value: int,
             print("Guess lower")
 
 
+def activate_ai(file):
+    for value in range(1000, 100_000, 1000):
+        play(value, linear_ai, file)
+        play(value, binary_search_ai, file)
 
 def main():
-    play(1000, interactive, "game_results.csv")
+    # play(1000, interactive, "game_results.csv")
+    activate_ai("game_results.csv")
 
 
 if __name__ == '__main__':

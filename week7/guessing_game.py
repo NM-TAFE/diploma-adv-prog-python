@@ -4,6 +4,7 @@ from pathlib import Path
 
 
 
+
 def get_secret(max_value: int) -> int:
     return random.randint(0, max_value)
 
@@ -18,6 +19,7 @@ def binary_search_ai(max_value: int, min_value: int = 0) -> int:
     """Uses a hyper-intelligent (post-human) super binary
     search capabilities.
     """
+
 def interactive(max_value: int, min_value: int = 0) -> int:
     """Human function"""
 
@@ -35,8 +37,11 @@ def interactive(max_value: int, min_value: int = 0) -> int:
 
 
 def save_result(file: Path | str,
-                tries: int, func: Callable,
-                header: tuple[str] = ('func_name', 'tries')) -> None:
+                tries: int,
+                max_value: int,
+                func: Callable,
+                header: tuple[str] =
+                ('func_name', 'tries', 'max_value')) -> None:
 
     if isinstance(file, str):
         file = Path(file)
@@ -48,16 +53,14 @@ def save_result(file: Path | str,
     with open(file, "a") as f:
         if file_is_empty:
             f.write(','.join(header) + '\n')
-        f.write(f'{func_name},{tries}\n')
-
-
-
+        f.write(f'{func_name},{tries},{max_value}\n')
 
 
 def play(max_value: int,
          guess_function: Callable,
          file: Path | str | None = None):
     tries = 0
+    og_max = max_value
     secret = get_secret(max_value)
     min_value = 0
     while True:
@@ -66,7 +69,7 @@ def play(max_value: int,
         if is_correct(guess, secret):
             print("Well done! You Win!")
             if file:
-                save_result(file, tries, guess_function)
+                save_result(file, tries, og_max, guess_function)
             break
         elif guess < secret:
             min_value = guess + 1

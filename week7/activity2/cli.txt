@@ -4,45 +4,20 @@
     4  cd Documents/
     5  clear
     6  ls
-    7  cd Adv\ Diploma\ Class/week7
-    8  cd Adv\ Diploma\ Class/
-    9  ls
-   10  cd dipl
    11  cd diploma-adv-prog-python/
    12  clear
    13  ls -al
    14  python --version
-   15  .venv/Scripts/activate
-   16  source .venv/Scripts/activate
-   17  clear
+   15  .venv/Scripts/activate  // Windows
+   16  source .venv/Scripts/activate / Linux, Mac Git Bash
    18  python --version
-   19  ls
-   20  ls -al
-   21  clear
-   22  ls
-   23  cd Documents/
-   24  ls
-   25  cd Adv\ Diploma\ Class/
-   26  clear
-   27  ls
-   28  cd diploma-adv-prog-python/
-   29  ls
-   30  cd week7
-   31  ls
-   32  cd activity2/
-   33  ls
-   34  nano tasks.py
-   35  python --version
-   36  cd ../../../
-   37  cd diploma-adv-prog-python/
-   38  source .venv/Scripts/activate
-   39  clear
-   40  python -m python --version
+   32  ls
+   33  python -m tasks
+   34  python tasks.py
+   35  nano tasks.py
    41  python --version
    42  cd week7
    43  ls
    44  cd activity2/
-   45  ls
-   46  nano tasks.py
    47  history
    48  history > cli.txt

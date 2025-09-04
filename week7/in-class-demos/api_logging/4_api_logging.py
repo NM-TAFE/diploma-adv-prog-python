@@ -16,7 +16,7 @@ logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %
 
 # Load API key from environment variables for security
 # API_KEY = os.getenv("OPENWEATHER_API_KEY")
-API_KEY = 'no chance'  # Replace with your actual API key
+API_KEY = 'd5b5ea4324fe1fe5f575e96a650deac0'  # Replace with your actual API key
 
 def get_weather(lat, lon):
     """Fetches weather data for the specified latitude and longitude."""

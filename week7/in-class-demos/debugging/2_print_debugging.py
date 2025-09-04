@@ -38,11 +38,12 @@ def process_numbers(numbers):
         return None
 
 # Sample data to process
-numbers = [5, -3, 2, -8, 7, 10, -1, 0]
-# numbers = [5, -3, 'a', -8, 7, 10, -1, 0]
+# numbers = [5, -3, 2, -8, 7, 10, -1, 0]
+numbers = [5, -3, 'a', -8, 7, 10, -1, 0]
 
 try:
     result = process_numbers(numbers)
+    log_message(process_numbers(numbers))
 except Exception as error:
     traceback.print_exc()
     traceback_string = traceback.format_exc()

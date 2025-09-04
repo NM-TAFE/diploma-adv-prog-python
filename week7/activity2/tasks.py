@@ -11,11 +11,11 @@ import pdb
 # import os
 
 def add_task(tasks, task):
-    # pdb.set_trace()
-    task.append((task, False))
+    pdb.set_trace()
+    tasks.append((task, False))
 
 def mark_task_completed(tasks, index):
-    # pdb.set_trace()
+    breakpoint()
     if 0 <= index < len(tasks):
         tasks[index] = True 
     else:
@@ -55,7 +55,7 @@ def binary_search(tasks, target):
     return -1
 
 def main():
-    # pdb.set_trace()
+    pdb.set_trace()
     tasks = []
 
     while True:

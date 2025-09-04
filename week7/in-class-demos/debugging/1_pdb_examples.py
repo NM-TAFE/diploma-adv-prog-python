@@ -5,28 +5,7 @@ breakpoint()
 print(f'path = {filename}')
 
 
-# #example 2
-# l & ll (list): Display the source code around the current line.
-# p head: Print the value of head.
-# p tail: Print the value of tail.
-# n: Move to the next line in the current function.
-# r (return): Continue execution until the current function returns.
-
-# import os
-#
-# def get_path(file_name):
-#     """Return file's path or empty string if no path."""
-#     breakpoint()
-#     head, tail = os.path.split(file_name)
-#     import pdb; pdb.set_trace()
-#
-#     return head
-#
-#
-# filename = __file__
-# print(f'path = {get_path(filename)}')
-
-# # example 3
+# # example 2
 # n: Step to the next line in the current scope.
 # s: Step into the get_path function.
 # p head, p tail: Print the current value of head and tail.
@@ -47,7 +26,7 @@ print(f'path = {filename}')
 # filename_path = get_path(filename)
 # print(f'path = {filename_path}')
 
-# # example 4
+# # example 3
 # u: up the stack
 # d: down the stack
 # c: Continue running the script until the next breakpoint or the end of the program.

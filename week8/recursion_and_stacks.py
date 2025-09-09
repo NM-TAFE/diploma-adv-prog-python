@@ -17,6 +17,12 @@ def a():
 
 
 # TODO: write a version of this that returns a list with countdown values
+
+
+def countdown_list(n: int) -> list[int]:
+    """returns a countdown as a list such that:
+    [n, n - 1, n -2, ..., 1]
+    """
 def countdown(value):
     if value < 1:
         return 0
@@ -24,5 +30,6 @@ def countdown(value):
     countdown(value - 1)
     return None
 
-countdown(1000)
+countdown(5)
+# [5, 4, 3, 2, 1]
 # print(a())

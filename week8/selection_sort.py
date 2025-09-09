@@ -1,5 +1,6 @@
 import random
 from typing import Sequence
+from functools import lru_cache
 
 
 def create_unsorted_list(max_val: int,
@@ -8,17 +9,23 @@ def create_unsorted_list(max_val: int,
     return [random.randint(min_val, max_val) for _ in range(length)]
 
 
-def get_smallest_number(values: Sequence[int]) -> int:
+def find_smallest_index_and_value(values: Sequence[int]) -> tuple[int, int]:
+    """Given a sequence returns index and value"""
     smallest = values[0]
-    for value in values[1:]:
+    smallest_index = 0
+    for index, value in enumerate(values[1:], 1):
         if value < smallest:
             smallest = value
-    return smallest
+            smallest_index = index
+    return smallest_index, smallest
+
+
 def test():
-    unsorted = create_unsorted_list(100, 10)
-    smallest = get_smallest_number(unsorted)
-    assert smallest == min(unsorted), "didn't get the smallest"
-    print(f"Smallest in {unsorted} is {smallest}")
+    unsorted = create_unsorted_list(100, 5)
+    index, smallest = find_smallest_index_and_value(unsorted)
+    assert smallest == min(unsorted), f"didn't get the smallest, {unsorted} {smallest} / {min(unsorted)}"
+    assert index == unsorted.index(smallest)
+    print(f"Smallest in {unsorted} is {smallest} in {index}")
 
 
 if __name__ == '__main__':

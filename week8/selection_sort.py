@@ -1,5 +1,5 @@
 import random
-from typing import Sequence
+from typing import Sequence, MutableSequence
 from functools import lru_cache
 
 
@@ -29,7 +29,7 @@ def sort_values(values: list[int]) -> list[int]:
     return sorted_list
 
 
-def sort_values_2(values: list[int]) -> None:
+def sort_values_2(values: MutableSequence[int]) -> None:
     """Returns a sorted list"""
     sorted_list = []
     while values:

@@ -1,5 +1,7 @@
 import logging
+import asyncio
 
+# factory
 class User:
     def __init__(self, name):
         self.name = name
@@ -41,7 +43,7 @@ users = [
 
 # print(users)
 
-
+# observer
 class UploadNotifier:
     def __init__(self):
         self.subscribers = []
@@ -65,7 +67,7 @@ notifier.subscribe(alert_admin)
 notifier.subscribe(log_upload)
 
 
-
+# decorator
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def action_logger(func):
@@ -83,3 +85,31 @@ def upload_document(user, document):
 
 
 upload_document(users[0], 'project_plan_v1.pdf')
+
+# generator
+def read_logs(log_file_path):
+    with open(log_file_path, 'r') as file:
+        for line in file:
+            yield line.strip()
+
+for line in read_logs('logs.txt'):
+    print('Log: ', line)
+
+# synchrounous
+async def fetch_metadata(doc):
+    async with aiohttp.ClientSession() as session:
+        url = f"https://jsonplaceholder.typicode.com/users"
+
+
+    async with session.get(url) as response:
+        data = await response.json()
+        print(f"Doc {doc}: {data['title']}")
+
+async def fetch_all_metadata():
+    await asyncio.gather(
+        fetch_metadata(1),
+        fetch_metadata(2),
+        fetch_metadata(3)
+    )
+
+asyncio.run(fetch_all_metadata())

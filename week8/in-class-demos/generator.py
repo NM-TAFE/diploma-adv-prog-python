@@ -1,14 +1,11 @@
-# Our generator
+# Generator to preprocess and stream lines
 def get_lines(filename):
     with open(filename) as f:
         for line in f:
             yield line.strip()
 
-def get_even_numbers(limit):
-    for num in range(limit + 1):
-        if num % 2 == 0:
-            yield num
+line_generator = get_lines("large_data.txt")
 
-# Streaming lines from a large file
-for line in get_lines("large_data.txt"):
-    print(line)
+# get lines using next() - pagination
+for _ in range(10):
+    print(next(line_generator))

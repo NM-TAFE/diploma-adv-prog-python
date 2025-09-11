@@ -18,4 +18,4 @@ def get_shipping_cost(strategy, weight):
     return strategy.calculate(weight)
 
 print(get_shipping_cost(ExpressShipping(), 3))  # 30
-# print(get_shipping_cost(StandardShipping(), 3))  # 30
+print(get_shipping_cost(StandardShipping(), 3))  # 30

@@ -23,6 +23,12 @@ def countdown_list(n: int) -> list[int]:
     """returns a countdown as a list such that:
     [n, n - 1, n -2, ..., 1]
     """
+    if n <= 1:
+        return [n]
+    return [n] + countdown_list(n - 1)
+
+
+
 def countdown(value):
     if value < 1:
         return 0
@@ -33,3 +39,4 @@ def countdown(value):
 countdown(5)
 # [5, 4, 3, 2, 1]
 # print(a())
+print(countdown_list(5))

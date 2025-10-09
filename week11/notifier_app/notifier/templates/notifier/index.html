@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Notifier</title>
+    <link rel="stylesheet" href="{% static 'notifier/styles.css' %}">
+</head>
+<body>
+    <h2>Hello {{ user.name }} ({{ user.role }})</h2>
+    <p>Upload and notification triggered.</p>
+
+    <h3>Logs:</h3>
+    <ul>
+      {% for log in logs %}
+        <li>{{ log }}</li>
+      {% endfor %}
+    </ul>
+</body>
+</html>

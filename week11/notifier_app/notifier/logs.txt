@@ -1,0 +1,22 @@
+Lina uploaded 'design_specs.pdf'
+[ACTION] Lina (Manager), uploaded design_specs.pdf
+2025-04-01 14:42:33,981 - INFO - [ACTION] Lina (Manager) is performing upload_document
+2025-04-01 14:42:33,981 - INFO - [ALERT] Manager notified: 'design_specs.pdf' uploaded.
+2025-04-01 14:42:33,981 - INFO - [LOG] Document 'design_specs.pdf' was uploaded.
+
+Marcus uploaded 'budget_2025.xlsx'
+[ACTION] Marcus (Analyst), uploaded budget_2025.xlsx
+2025-04-01 15:03:21,455 - INFO - [ACTION] Marcus (Analyst) is performing upload_document
+2025-04-01 15:03:21,455 - INFO - [ALERT] Analyst notified: 'budget_2025.xlsx' uploaded.
+2025-04-01 15:03:21,455 - INFO - [LOG] Document 'budget_2025.xlsx' was uploaded.
+
+Jaya uploaded 'meeting_notes.docx'
+[ACTION] Jaya (Coordinator), uploaded meeting_notes.docx
+2025-04-01 16:22:58,027 - INFO - [ACTION] Jaya (Coordinator) is performing upload_document
+2025-04-01 16:22:58,027 - INFO - [ALERT] Coordinator notified: 'meeting_notes.docx' uploaded.
+2025-04-01 16:22:58,027 - INFO - [LOG] Document 'meeting_notes.docx' was uploaded.
+
+[METADATA] Doc 5: voluptatem sequi nesciunt. Neque porro quisquam est.
+[METADATA] Doc 7: totam rem aperiam, eaque ipsa quae ab illo inventore veritatis
+[METADATA] Doc 4: nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
+[METADATA] Doc 6: dolorem ipsum quia dolor sit amet, consectetur, adipisci velit

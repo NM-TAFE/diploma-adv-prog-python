@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>NASA APOD</title>
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+        />
+        <style>
+            .video-container {
+                position: relative;
+                padding-bottom: 56.25%;
+                height: 0;
+                overflow: hidden;
+            }
+            .video-container iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <section class="section">
+            <div class="container">
+                <h1 class="title">NASA Astronomy Picture of the Day</h1>
+                <p class="subtitle">
+                    Query the official NASA APOD API using any of the supported
+                    parameters.
+                </p>
+
+                <form class="box" method="get" action="{{ url_for('index') }}">
+                    <div class="field">
+                        <label for="date" class="label"
+                            >Date (YYYY-MM-DD)</label
+                        >
+                        <div class="control">
+                            <input
+                                id="date"
+                                name="date"
+                                class="input"
+                                type="date"
+                                value="{{ form_values.date }}"
+                            />
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="start_date" class="label"
+                            >Start Date (YYYY-MM-DD)</label
+                        >
+                        <div class="control">
+                            <input
+                                id="start_date"
+                                name="start_date"
+                                class="input"
+                                type="date"
+                                value="{{ form_values.start_date }}"
+                            />
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="end_date" class="label"
+                            >End Date (YYYY-MM-DD)</label
+                        >
+                        <div class="control">
+                            <input
+                                id="end_date"
+                                name="end_date"
+                                class="input"
+                                type="date"
+                                value="{{ form_values.end_date }}"
+                            />
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="count" class="label">Count</label>
+                        <div class="control">
+                            <input
+                                id="count"
+                                name="count"
+                                class="input"
+                                type="number"
+                                min="1"
+                                value="{{ form_values.count }}"
+                            />
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="checkbox" for="thumbs">
+                            <input
+                                id="thumbs"
+                                name="thumbs"
+                                type="checkbox"
+                                {% if form_values.thumbs %}checked{% endif %}
+                            />
+                            Include video thumbnails
+                        </label>
+                    </div>
+
+                    <div class="field is-grouped">
+                        <div class="control">
+                            <button type="submit" class="button is-link">
+                                Fetch APOD
+                            </button>
+                        </div>
+                        <div class="control">
+                            <a
+                                class="button is-light"
+                                href="{{ url_for('index') }}"
+                                >Reset</a
+                            >
+                        </div>
+                    </div>
+                </form>
+
+                <div class="box">
+                    {% if error %}
+                    <p class="has-text-danger">Error: {{ error }}</p>
+                    {% elif apod_items %} {% for item in apod_items %}
+                    <article class="content">
+                        <h2 class="title is-4">{{ item.title }}</h2>
+                        <p class="is-size-7 has-text-grey">{{ item.date }}</p>
+
+                        {% if item.media_type == "image" %}
+                        <figure class="image is-4by3">
+                            <img src="{{ item.url }}" alt="{{ item.title }}" />
+                        </figure>
+                        {% elif item.media_type == "video" %}
+                        <div class="video-container">
+                            <iframe
+                                src="{{ item.url }}"
+                                frameborder="0"
+                                allowfullscreen
+                            ></iframe>
+                        </div>
+                        {% else %}
+                        <p class="has-text-warning">
+                            Media type not supported: {{ item.media_type }}
+                        </p>
+                        {% endif %}
+
+                        <p>{{ item.explanation }}</p>
+
+                        {% if item.get("copyright") %}
+                        <p class="is-size-7 has-text-right">
+                            &copy; {{ item.copyright }}
+                        </p>
+                        {% endif %}
+                    </article>
+                    <hr />
+                    {% endfor %} {% else %}
+                    <p class="has-text-centered">
+                        {% if fetch_request %} No results returned for the given
+                        parameters. {% else %} Enter query parameters above and
+                        click "Fetch APOD" to retrieve NASA content. {% endif %}
+                    </p>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

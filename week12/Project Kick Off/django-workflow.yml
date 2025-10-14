@@ -1,0 +1,74 @@
+name: Django Test and Lint Workflow
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build-test-lint:
+    name: Build, Lint, and Test Django Project
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: django
+          POSTGRES_PASSWORD: django
+          POSTGRES_DB: test_db
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd="pg_isready -U django -d test_db"
+          --health-interval=5s
+          --health-timeout=5s
+          --health-retries=5
+
+    env:
+      DJANGO_SETTINGS_MODULE: project.settings
+      DATABASE_URL: postgres://django:django@localhost:5432/test_db
+      PYTHONPATH: .
+      DEBUG: false
+      SECRET_KEY: test-secret-key
+      ALLOWED_HOSTS: localhost,127.0.0.1
+      CI: true
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install flake8 pytest pytest-django pytest-cov
+
+      - name: Lint with flake8
+        run: |
+          echo "Running flake8 lint checks..."
+          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+          flake8 . --count --exit-zero --max-complexity=10 --max-line-length=88 --statistics
+
+      - name: Run Django Tests with Pytest
+        run: |
+          echo "Running Django test suite with pytest..."
+          pytest --ds=project.settings --disable-warnings --maxfail=2 \
+            --cov=. --cov-report=term-missing
+
+      - name: Upload Coverage Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: ./.coverage
+
+      - name: Verify Migrations
+        run: |
+          echo "Checking for missing migrations..."
+          python manage.py makemigrations --check --dry-run

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard | Notifier{% endblock %}
+
+{% block content %}
+  <section>
+    <h2>{{ page_title }}</h2>
+    <p>{{ welcome_message }}</p>
+    <canvas id="domainChart" width="400" height="200"></canvas> <!-- Chart mount point -->
+  </section>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Load Chart.js CDN -->
+  <script>
+    // Grab canvas element
+    const ctx = document.getElementById("domainChart");
+    // Instantiate chart with data from context (auto-escaped)
+    new Chart(ctx, {
+      type: "bar", // Vertical bar chart
+      data: {
+        labels: {{ domain_labels|safe }}, // Safe to inject JSON-style array
+        datasets: [{
+          label: "Recipients per Domain", // Legend label
+          data: {{ domain_counts|safe }}, // Count values
+          backgroundColor: ["#2563eb", "#16a34a", "#f97316"], // Visual palette
+        }]
+      }
+    });
+  </script>
+{% endblock %}

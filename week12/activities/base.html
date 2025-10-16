@@ -1,0 +1,26 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"> <!-- Ensure proper encoding -->
+  <title>{% block title %}Notifier{% endblock %}</title> <!-- Allow child templates to override -->
+  <link rel="stylesheet" href="{% static 'css/main.css' %}"> <!-- Shared stylesheet -->
+</head>
+<body>
+  <header>
+    <h1>Notifier Control Center</h1> <!-- Always visible banner -->
+    <nav>
+      <a href="{% url 'dashboard' %}">Dashboard</a> <!-- Navigation example -->
+      <a href="{% url 'alerts:upload' %}">Upload CSV</a> <!-- Placeholder for later activity -->
+    </nav>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %} <!-- Child templates inject content -->
+  </main>
+
+  <footer>
+    <small>&copy; {{ now|date:"Y" }} Notifier</small> <!-- Dynamic year display -->
+  </footer>
+</body>
+</html>

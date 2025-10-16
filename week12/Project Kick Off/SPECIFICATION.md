@@ -91,8 +91,9 @@ Your final submission must include the following:
 7. **User Error Messaging** – Graceful feedback for invalid input and exceptions.
 8. **Separation of Concerns** – ML code isolated from Django web logic.
 9. **Full Deployment to Proxmox VM** – Production-ready app running on your assigned server.
-10. **Completed Journal** – A dated record of design choices and iterations.
-11. **GitHub Repository with Issues and Pull Requests** – Organised project workflow and traceable commits which includes a final passing actions workflow.
+10. **Optimatsation** - Once deployed a recorded optimsation period is completed including change & effect
+11. **Completed Journal** – A dated record of design choices and iterations.
+12. **GitHub Repository with Issues and Pull Requests** – Organised project workflow and traceable commits which includes a final passing actions workflow.
 
 ---
 

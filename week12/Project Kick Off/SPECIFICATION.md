@@ -71,8 +71,9 @@ Your MVP should meet these initial goals:
 -   Response time under one second per inference.
 -   Explainable and versioned results.
 -   Real-time feedback to users.
--   Admins can reclassify, relabel, or retrain as needed (custom permission only)
 -   Minimal downtime during updates.
+
+Version 2: -   Admins can reclassify, relabel, or retrain as needed (custom permission only)
 
 Deliverable: Create a short description of your MVP goals in your GitHub repository’s `README.md` or `docs/` folder.
 

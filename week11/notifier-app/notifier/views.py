@@ -113,3 +113,13 @@ def document_detail(request, pk):
         return HttpResponse(status=204)
 
     return HttpResponseNotAllowed(["GET", "PUT", "PATCH", "DELETE"])
+
+
+def dashboard(request): # Build the context dictionary that template will consume
+    context = {
+        "page_title": "Notifier Dashboard",
+        "welcome_message": "Welcome to the notifier control panel!",
+        "active_alerts": ["Server Load High", "Email Queue Delayed"],
+    }
+
+    return render(request, "notifier/dashboard.html", context)

@@ -1,0 +1,16 @@
+{% extends "base.html" %} <!-- Reuse global layout if available -->
+
+{% block content %}
+
+  <section>
+    <h1>{{ page_title }}</h1>
+    <p>{{ welcome_message }}</p>
+    <ul>
+      {% for alert in active_alerts %}
+        <li>{{ alert }}</li>
+      {% empty %}
+        <li>No active alerts right now.</li> <!-- Fallback when list is empty -->
+      {% endfor %}
+    </ul>
+  </section>
+{% endblock %}

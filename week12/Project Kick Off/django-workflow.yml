@@ -11,24 +11,8 @@ jobs:
     name: Build, Lint, and Test Django Project
     runs-on: ubuntu-latest
 
-    services:
-      postgres:
-        image: postgres:16
-        env:
-          POSTGRES_USER: django
-          POSTGRES_PASSWORD: django
-          POSTGRES_DB: test_db
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd="pg_isready -U django -d test_db"
-          --health-interval=5s
-          --health-timeout=5s
-          --health-retries=5
-
     env:
       DJANGO_SETTINGS_MODULE: project.settings
-      DATABASE_URL: postgres://django:django@localhost:5432/test_db
       PYTHONPATH: .
       DEBUG: false
       SECRET_KEY: test-secret-key

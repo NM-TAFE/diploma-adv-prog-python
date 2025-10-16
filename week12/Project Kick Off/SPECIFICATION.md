@@ -26,11 +26,10 @@ project_root/
 │ ├── views.py
 │ ├── serializers.py
 │ └── forms.py
+│ └──templates/classifier/ # HTML templates for user forms and result pages
+│   └── results.html
 │
-├── templates/classifier/ # HTML templates for user forms and result pages
-│ └── results.html
-│
-├── api/ # Django REST Framework endpoints
+├── api/ # Django REST Framework endpoints (Optional - v2)
 │ ├── views.py
 │ ├── serializers.py
 │ └── urls.py
@@ -73,7 +72,9 @@ Your MVP should meet these initial goals:
 -   Real-time feedback to users.
 -   Minimal downtime during updates.
 
-Version 2: -   Admins can reclassify, relabel, or retrain as needed (custom permission only)
+**Version 2** 
+- Admins can reclassify, relabel, or retrain as needed (custom permission only)
+- API route exposure
 
 Deliverable: Create a short description of your MVP goals in your GitHub repository’s `README.md` or `docs/` folder.
 

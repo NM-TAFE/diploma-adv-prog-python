@@ -1,0 +1,28 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"> <!-- Ensure proper encoding -->
+  <title>{% block title %}Notifier{% endblock %}</title> <!-- Allow child templates to override -->
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+</head>
+<body>
+  <header>
+    <h1>Notifier Control Center</h1> <!-- Always visible banner -->
+    <nav>
+      <a href="{% url 'dashboard' %}">Dashboard</a> <!-- Navigation example -->
+    </nav>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %} <!-- Child templates inject content -->
+  </main>
+
+  <footer>
+    <small>&copy; {% now "Y" %} Notifier</small> <!-- Dynamic year display -->
+  </footer>
+  <script src="{% static 'js/main.js' %}"></script> <!-- Main JavaScript file -->
+</body>
+</html>

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Upload Recipients{% endblock %}
+
+{% block content %}
+
+  <h2>Upload Recipients (CSV)</h2>
+  <p>Expected columns: email, first_name, last_name</p> <!-- Explain schema -->
+  {% if messages %}
+    <ul>
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Validate File</button>
+  </form>
+{% endblock %}

@@ -86,13 +86,13 @@ Your final submission must include the following:
 2. **Authentication** – Django or DRF authentication with role-based permissions.
 3. **Observer Pattern** – Event-driven behaviour (e.g., logging, notification, or analytics triggers).
 4. **Logging Decorator** – A decorator that records inputs, outputs, and errors to the log file.
-5. **Database Model** – At least one persistent model with full CRUD implementation.
+5. **Database Model** – At least one persistent model which stores metadata for the process including file name, user, data/time, model version, model results/metrics
 6. **Responsive UI** – Mobile-friendly templates using Bulma or Tailwind CSS.
 7. **User Error Messaging** – Graceful feedback for invalid input and exceptions.
 8. **Separation of Concerns** – ML code isolated from Django web logic.
 9. **Full Deployment to Proxmox VM** – Production-ready app running on your assigned server.
 10. **Completed Journal** – A dated record of design choices and iterations.
-11. **GitHub Repository with Issues and Pull Requests** – Organised project workflow and traceable commits.
+11. **GitHub Repository with Issues and Pull Requests** – Organised project workflow and traceable commits which includes a final passing actions workflow.
 
 ---
 
@@ -124,13 +124,13 @@ Instructions:
 3. Convert each major item (e.g., dataset setup, model selection, template design) into issues.
 4. Link each issue to a milestone (e.g., “8.2 Data Ingestion”).
 
-This wshould be recorded part of your project management and planning record.
+This should be recorded part of your project management and planning record.
 
 ---
 
 ## Upcoming Project Phases
 
-Below are the stages of your project rto be assessed.
+Below are the stages of your project to be assessed.
 
 ### 8.1 Defining the Project (e.g., Text Classifier)
 
@@ -147,7 +147,7 @@ Students now begin this stage independently:
 -   Create and assign GitHub issues for each development task.
 -   Use milestones to represent features such as “Model Loading” “Auth System,” or “UI Layout.”
 
-### 8.3 Model Training, Serialization, and Versioning
+### 8.3 Model Training, Serialisation, and Versioning
 
 Train and version your model using joblib or pickle; integrate with Django for inference.
 

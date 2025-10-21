@@ -1,0 +1,27 @@
+{
+  "model": {
+    "name": "Sentiment Classifier",
+    "version": "v1.0.0",
+    "type": "text_classification",
+    "framework": "transformers",
+    "model_id": "distilbert-base-uncased-finetuned-sst-2-english"
+  },
+  "training": {
+    "trained_on": "2025-06-18",
+    "dataset_id": "movie-reviews-v2",
+    "labels": ["positive", "negative"]
+  },
+  "metrics": {
+    "accuracy": 0.94,
+    "f1_score": 0.93
+  },
+  "inference": {
+    "input_example": "The movie was surprisingly good!",
+    "predicted_label": "positive",
+    "confidence": 0.987
+  },
+  "metadata": {
+    "created_by": "J Robertson",
+    "environment": "production"
+  }
+}

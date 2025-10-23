@@ -1,6 +1,6 @@
-# 🧩 Initial Server Login and Test App Setup
+# Initial Server Login and Test App Setup
 
-## 🔐 INITIAL LOGIN
+## INITIAL LOGIN
 1. Open terminal or console.
 2. Get IP address of the target node.
 3. Connect via SSH:
@@ -42,7 +42,7 @@ ip addr
 
 ---
 
-## 🧪 TEST APP SETUP
+## TEST APP SETUP
 
 ### 1. Update and install dependencies
 ```bash
@@ -89,7 +89,7 @@ python app.py
 
 ---
 
-## ✅ Verification
+## Verification
 Visit the following URL in your browser:
 ```
 http://<your-server-ip>:5000

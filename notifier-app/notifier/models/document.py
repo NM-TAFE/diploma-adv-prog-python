@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class Document(models.Model):
     """Represents a file uploaded to the notifier application."""
     title = models.CharField(max_length=255)

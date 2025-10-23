@@ -91,10 +91,9 @@ python app.py
 
 ## Verification
 Visit the following URL in your browser:
-```
-http://<your-server-ip>:5000
-```
+
+**http://<your-server-ip>:5000**
 You should see:
-```
+```html
 Hello from Proxmox Debian 12 test app!
 ```

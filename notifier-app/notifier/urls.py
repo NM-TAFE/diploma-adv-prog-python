@@ -7,9 +7,9 @@ from .views import (
 )
 
 urlpatterns = [
-    path('', notify_view, name='home'),
-    path('notify', notify_view, name='notify'),
-    path('api/documents', documents_collection, name='documents_collection'),
+    path('/', notify_view, name='home'),
+    path('notify/', notify_view, name='notify'),
+    path('api/documents/', documents_collection, name='documents_collection'),
     path('api/documents/<int:pk>', document_detail, name='document_detail'),
-    path('dashboard', dashboard, name='dashboard'),
+    path('dashboard/', dashboard, name='dashboard'),
 ]

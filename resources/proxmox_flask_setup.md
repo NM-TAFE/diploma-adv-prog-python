@@ -5,7 +5,9 @@
 2. Get IP address of the target node.
 3. Connect via SSH:
    ```bash
-   ssh localadmin@<your-server-ip>
+   ssh localadmin@<your_ip>
+
+   pwd: L0calAdm1n!
    ```
 4. When prompted, enter the password:
    ```

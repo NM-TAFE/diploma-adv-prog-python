@@ -2,27 +2,58 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8"> <!-- Ensure proper encoding -->
-  <title>{% block title %}Notifier{% endblock %}</title> <!-- Allow child templates to override -->
-  <link rel="stylesheet" href="{% static 'css/main.css' %}">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-</head>
-<body>
-  <header>
-    <h1>Notifier Control Center</h1> <!-- Always visible banner -->
-    <nav>
-      <a href="{% url 'dashboard' %}">Dashboard</a> <!-- Navigation example -->
+  <head>
+    <meta charset="utf-8" />
+    <title>{% block title %}Notifier{% endblock %}</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar is-light" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="{% url 'home' %}">
+          <strong>Notifier</strong>
+        </a>
+      </div>
+
+      <div class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="{% url 'home' %}">Home</a>
+          <a class="navbar-item" href="{% url 'notify' %}">Notify</a>
+          <a class="navbar-item" href="{% url 'documents_collection' %}"
+            >Documents</a
+          >
+          <a class="navbar-item" href="{% url 'dashboard' %}">Dashboard</a>
+          <a class="navbar-item" href="{% url 'admin:index' %}">Admin</a>
+        </div>
+
+        <div class="navbar-end">
+          {% if user.is_authenticated %}
+          <div class="navbar-item">Hello, {{ user.username }}</div>
+          <a class="navbar-item" href="{% url 'logout' %}">Logout</a>
+          {% else %}
+          <a class="navbar-item" href="{% url 'login' %}">Login</a>
+          {% endif %}
+        </div>
+      </div>
     </nav>
-  </header>
 
-  <main>
-    {% block content %}{% endblock %} <!-- Child templates inject content -->
-  </main>
+    <section class="section">
+      <div class="container">
+        <h1 class="title">Notifier Control Center</h1>
+      </div>
+    </section>
 
-  <footer>
-    <small>&copy; {% now "Y" %} Notifier</small> <!-- Dynamic year display -->
-  </footer>
-  <script src="{% static 'js/main.js' %}"></script> <!-- Main JavaScript file -->
-</body>
+    <main class="section">
+      <div class="container">{% block content %} {% endblock %}</div>
+    </main>
+
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <small>&copy; {% now "Y" %} Notifier</small>
+      </div>
+    </footer>
+  </body>
 </html>

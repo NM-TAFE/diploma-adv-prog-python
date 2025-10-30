@@ -48,7 +48,7 @@ def notify_view(request):
 
 def serialise_document(document: Document) -> dict:
     return {
-        "id": document.id,
+        # "id": document.id,
         "title": document.title,
         "description": document.description,
         "uploaded_at": document.uploaded_at.isoformat().replace("+00:00", "Z"),

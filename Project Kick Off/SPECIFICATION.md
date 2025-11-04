@@ -27,7 +27,7 @@ project_root/
 │ ├── serializers.py
 │ └── forms.py
 │ └──templates/classifier/ # HTML templates for user forms and result pages
-│   └── results.html
+│ └── results.html
 │
 ├── api/ # Django REST Framework endpoints (Optional - v2)
 │ ├── views.py
@@ -67,14 +67,15 @@ Your research notes should include:
 Your MVP should meet these initial goals:
 
 -   Accurate predictions across common input types.
--   Response time under one second per inference.
+-   Target a response time under one second per inference.
 -   Explainable and versioned results.
 -   Real-time feedback to users.
 -   Minimal downtime during updates.
 
-**Version 2** 
-- Admins can reclassify, relabel, or retrain as needed (custom permission only)
-- API route exposure
+**Version 2**
+
+-   Admins can reclassify, relabel, or retrain as needed (custom permission only)
+-   API route exposure
 
 Deliverable: Create a short description of your MVP goals in your GitHub repository’s `README.md` or `docs/` folder.
 
@@ -152,11 +153,11 @@ Students now begin this stage independently:
 
 ### 8.3 Model Training, Serialisation, and Versioning
 
-Train and version your model using joblib or pickle; integrate with Django for inference.
+Train and version your model using joblib or pickle; integrate with Django for inference.(Optional)
 
 ### 8.4 Backend API and Frontend Integration
 
-Connect REST endpoints with UI templates for prediction requests and display.
+Connect REST endpoints with UI templates for prediction requests and display. (Optional)
 
 ### 8.5 Testing, Deployment, and Logging
 

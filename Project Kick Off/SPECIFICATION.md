@@ -14,31 +14,33 @@ This README covers Stage 1: Planning, with future milestones listed below.
 
 ## Required Folder Structure
 
-Organise your Django + ML project as follows:
+Organise your **Django + ML** project as follows:
 
+```bash
 project_root/
 │
-├── ml/ # Machine Learning utilities (loading, inference, version control)
-│ └── predict.py # Example inference entry point
+├── ml/                        # Machine Learning utilities (loading, inference, version control)
+│   └── predict.py             # Example inference entry point
 │
-├── classifier/ # Django app: forms, views, serializers
-│ ├── models.py
-│ ├── views.py
-│ ├── serializers.py
-│ └── forms.py
-│ └──templates/classifier/ # HTML templates for user forms and result pages
-│   └── results.html
+├── classifier/                # Django app: forms, views, serializers
+│   ├── models.py
+│   ├── views.py
+│   ├── serializers.py
+│   ├── forms.py
+│   └── templates/classifier/  # HTML templates for user forms and result pages
+│       └── results.html
 │
-├── api/ # Django REST Framework endpoints (Optional - v2)
-│ ├── views.py
-│ ├── serializers.py
-│ └── urls.py
+├── api/                       # Django REST Framework endpoints (Optional - v2)
+│   ├── views.py
+│   ├── serializers.py
+│   └── urls.py
 │
-├── logs/ # Custom logging configuration and prediction audit trail
-│ └── app.log
+├── logs/                      # Custom logging configuration and prediction audit trail
+│   └── app.log
 │
 ├── manage.py
 └── requirements.txt
+```
 
 Tip: Keep the `ml/` module decoupled from Django so it can be tested in Jupyter or Pytest independently.
 
@@ -67,14 +69,15 @@ Your research notes should include:
 Your MVP should meet these initial goals:
 
 -   Accurate predictions across common input types.
--   Response time under one second per inference.
+-   Target a response time under one second per inference.
 -   Explainable and versioned results.
 -   Real-time feedback to users.
 -   Minimal downtime during updates.
 
-**Version 2** 
-- Admins can reclassify, relabel, or retrain as needed (custom permission only)
-- API route exposure
+**Version 2**
+
+-   Admins can reclassify, relabel, or retrain as needed (custom permission only)
+-   API route exposure
 
 Deliverable: Create a short description of your MVP goals in your GitHub repository’s `README.md` or `docs/` folder.
 
@@ -152,11 +155,11 @@ Students now begin this stage independently:
 
 ### 8.3 Model Training, Serialisation, and Versioning
 
-Train and version your model using joblib or pickle; integrate with Django for inference.
+Train and version your model using joblib or pickle; integrate with Django for inference.(Optional)
 
 ### 8.4 Backend API and Frontend Integration
 
-Connect REST endpoints with UI templates for prediction requests and display.
+Connect REST endpoints with UI templates for prediction requests and display. (Optional)
 
 ### 8.5 Testing, Deployment, and Logging
 

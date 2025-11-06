@@ -1,0 +1,51 @@
+{% extends "base.html" %} {% block content %}
+<section class="section">
+  <div class="container">
+    <h1 class="title">Notifications</h1>
+
+    <div class="box">
+      <div class="columns is-multiline">
+        <div class="column is-one-third">
+          <p class="has-text-weight-semibold">Total Queued:</p>
+          <p>{{ total_queued }}</p>
+        </div>
+        <div class="column is-one-third">
+          <p class="has-text-weight-semibold">Total Sent:</p>
+          <p>{{ total_sent }}</p>
+        </div>
+        <div class="column is-one-third">
+          <p class="has-text-weight-semibold">Total Failed:</p>
+          <p>{{ total_failed }}</p>
+        </div>
+      </div>
+    </div>
+
+    <table class="table is-striped is-hoverable is-fullwidth">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Document</th>
+          <th>Recipient</th>
+          <th>Status</th>
+          <th>Created At</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for notification in object_list %}
+        <tr>
+          <td>{{ notification.id }}</td>
+          <td>{{ notification.document.title }}</td>
+          <td>{{ notification.recipient.get_full_name }}</td>
+          <td>{{ notification.status }}</td>
+          <td>{{ notification.created_at }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="5" class="has-text-centered">No notifications found.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endblock %}
